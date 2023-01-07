@@ -1,0 +1,503 @@
+// views/about.vue
+
+.about {
+  .container {
+    //layout
+    @include flex(row, nowrap, center, center);
+    position: relative;
+  }
+}
+
+@include screen(tablet-landscape) { 
+  .about {
+    .container {
+      //layout
+      @include flex(column, nowrap, center, flex-end);
+    }
+  }
+} 
+
+@include screen(tablet-portrait) { 
+  .about {
+    .container {
+      //layout
+      margin: rem-calc(32) auto 0;
+
+      &:last-child {
+        //layout
+        @include flex(column, nowrap, flex-start, flex-end);
+        height: rem-calc(700);
+      }
+    }
+  }
+}
+
+@include screen(custom-width, max, 550px) { 
+  .about {
+    .container {
+      &:last-child {
+        //layout
+        @include flex(column, nowrap, flex-start, flex-end);
+        height: rem-calc(850);
+      }
+    }
+  }
+}
+
+@include screen(custom-height, max, 450px) {
+  .about {
+    .container {
+      //layout
+      height: auto;
+    }
+  }
+}
+
+// components/about-me.vue
+
+.about {
+  &__subtitle {
+    //layout
+    margin: rem-calc(0 0 16);
+
+    //typo
+    color: $color_secondary;
+    font-size: rem-calc(14);
+    font-weight: $font-weight_bold;
+    letter-spacing: rem-calc(3);
+  }
+
+  &__text {
+    //layout
+    flex: 1;
+    margin: rem-calc(0 192 0 0);
+
+    //typo
+    line-height: rem-calc(24);
+  }
+
+  &__subtitle {
+    //typo
+    font-size: $font-size_lg-sub;
+  }
+
+  &__picture-display {
+    //layout
+    position: relative;
+  }
+
+  &__title {
+    //layout
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    position: absolute;
+
+    //typo
+    font-size: rem-calc(64);
+
+    //animation
+    transform: translate(-75%, -50%);
+  }
+}
+
+@include screen(laptop) { 
+  .about {
+    &__text {
+      //layout
+      margin: rem-calc(0 120 0 0);
+    }
+
+    &__image {
+      //layout
+      width: 100%;
+      max-width: rem-calc(450);
+    }
+
+    &__title {
+      //layout
+      width: rem-calc(500);
+
+      //animation
+      transform: translate(-65%, -50%);
+    }
+  }
+}
+
+@include screen(tablet-landscape) {
+  .about {
+    &__text {
+      //layout
+      flex: 0;
+      width: 100%;
+      order: 1;
+      margin: rem-calc(16 0);
+    }
+
+    &__picture-display {
+      //layout 
+      order: 0;
+    }
+
+    &__image-container {
+      //layout
+      height: 100%;
+      overflow: hidden;
+      max-height: rem-calc(400);
+    }
+
+    &__title {
+      //layout
+      left: 0;
+
+      //animation
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .about {
+    &__title {
+      //typo
+      font-size: rem-calc(44);
+
+      //animation
+      transform: translate(-10%, -50%);
+    }
+  }
+}
+
+@include screen(mobile) {
+  .about {
+    &__title {
+      //typo
+      left: 0;
+      font-size: rem-calc(24);
+
+      //animation
+      transform: translate(0, 50%);
+    }
+
+
+    &__image-container {
+      //layout
+      padding: rem-calc(0 16);
+    }
+  }
+}
+
+// components/about-skill.vue
+
+.about {
+  &__skill {
+    //layout
+    width: 100%;
+  }
+
+  &__content {
+    //layout
+    @include flex(row, nowrap, flex-start, flex-start);
+    width: 100%;
+    position: absolute;
+  }
+
+  &__expertise,
+  &__soft-lang {
+    //layout
+    position: relative;
+
+    &__title {
+      //layout
+      top: 12%;
+      width: 100%;
+      max-width: rem-calc(600);
+
+      //typo 
+      font-weight: $font-weight_bold;
+    }
+
+    &__content {
+      //layout
+      @include flex(row, nowrap, flex-start, center);
+      width: 100%;
+    }
+
+    &__list {
+      //layout
+      margin: rem-calc(112 16 0);
+    }
+
+    &__item {
+      //layout
+      margin: rem-calc(0 0 48);
+    }
+  }
+
+  &__soft-lang {
+    &__progress-line {
+      //layout
+      width: 100%;
+      display: block;
+      padding: rem-calc(0 0 4);
+
+      //design
+      border-bottom: rem-calc(1) solid $color_primary;
+    }
+
+    &__content {
+      //layout
+      @include flex(row, nowrap, flex-start, center);
+    }
+
+    &__list {
+      //layout
+      flex: 1;
+      margin: rem-calc(112 16 0);
+    }
+
+    &__progress-percentage {
+      //layout
+      float: right;
+    }
+  }
+
+  &__expertise {
+    &__content {
+      //layout
+      width: auto;
+    }
+
+    &__title {
+      //layout
+      left: unset;
+
+      //animation
+      transform: translate(0%, -50%);
+    }
+
+    &__list {
+      //layout
+      width: rem-calc(300);
+    }
+
+    &__image {
+      //layout
+      margin-top: 25%;
+    }
+  }
+}
+
+@include screen(laptop) { 
+  .about {
+    &__expertise,
+    &__soft-lang {
+      //layout
+      position: relative;
+  
+      &__content {
+        //layout
+        @include flex(row, nowrap, flex-start, center);
+        width: 100%;
+      }
+    }
+
+    &__soft-lang {
+      &__image {
+        //layout
+        width: rem-calc(400);
+      }
+    }
+
+    &__expertise {
+      &__content {
+        //layout
+        @include flex(row, wrap, flex-start, flex-start);
+      }
+
+      &__title {
+        //layout
+        position: static;
+
+        //animation
+        transform: unset;
+      }
+
+      &__list {
+        //layout
+        width: 40%;
+        margin: rem-calc(32 16 0);
+      }
+    }
+  }
+}
+
+@include screen(tablet-landscape) { 
+  .about {
+    &__content {
+      //layout
+      @include flex(column, nowrap, flex-start, flex-start);
+    }
+
+    &__expertise,
+    &__soft-lang {
+      &__list {
+        //layout
+        margin: rem-calc(0 16);
+
+        &:first-child {
+          //layout
+          margin-left: 0;
+        }
+
+        &:last-child {
+          //layout
+          margin-right: 0;
+        }
+      }
+
+      &__item {
+        //layout
+        margin: rem-calc(32 0);
+      }
+    }
+
+    &__soft-lang {
+      &__title {
+        //layout
+        left: 50%;
+      }
+
+      &__image {
+        //layout
+        width: 100%;
+        max-width: rem-calc(400);
+      }
+    }
+
+    
+    &__expertise {
+      .about__content {
+        //layout
+        @include flex(row, nowrap, flex-start, flex-start);
+      }
+
+      &__list {
+        //layout
+        margin: rem-calc(32 16);
+      }
+
+      &__image {
+        //layout
+        width: 100%;
+        max-width: rem-calc(400);
+      }
+    }
+  }
+}
+
+@include screen(tablet-portrait) { 
+  .about {
+    &__soft-lang {
+      &__title {
+        //layout
+        top: 12%;
+        left: 25%;
+      }
+
+      &__skill {
+        //typo
+        font-size: rem-calc(12);
+      }
+    }
+
+    &__expertise {
+      .about__content {
+        //layout
+        @include flex(column, nowrap, flex-start, flex-start);
+      }
+
+      &__image {
+        //layout
+        width: 100%;
+        max-width: rem-calc(400);
+        margin-top: 0;
+      }
+
+      &__list {
+        //layout
+        width: 50%;
+        margin: rem-calc(32 0 16);
+      }
+    }
+  }
+}
+
+@include screen(custom-width, max, 550px) { 
+  .about {
+    &__soft-lang {
+      &__content {
+        //layout
+        @include flex(column, nowrap, center, center);
+      }
+
+      &__list {
+        //layout
+        width: 100%;
+        margin: 0;
+      }
+
+      &__item {
+        &:last-child {
+          //layout
+          margin: rem-calc(32 0 0);
+        }
+      }
+    }
+
+    &__expertise {
+      &__item {
+        &:last-child {
+          //layout
+          margin: rem-calc(32 0 0);
+        }
+      }
+
+      &__list {
+        //layout
+        width: 100%;
+        margin: 0;
+
+        &:last-child {
+          //layout
+          margin: rem-calc(0 0 16);
+        }
+      }
+    }
+  }
+}
+
+@include screen(mobile) { 
+  .about {
+    &__soft-lang {
+      &__title {
+        //layout
+        top: 5%;
+        left: unset;
+        right: 0;
+      }
+    }
+
+    &__expertise {
+      &__list {
+        //layout
+        width: 100%;
+
+        &:last-child {
+          //layout
+          margin: rem-calc(0 0 32);
+        }
+      }
+    }
+  }
+}

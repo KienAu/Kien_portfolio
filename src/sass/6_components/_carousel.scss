@@ -1,0 +1,396 @@
+// components/carousel.vue
+
+$carousel-number-content: 3;
+
+.carousel {
+  //layout
+  @include flex(row, nowrap, center, center);
+
+  &__view {
+    &--is-big {
+      .carousel__slider {
+        //layout
+        @include box-size(rem-calc(770), rem-calc(477));
+
+        //design
+        background-color: $color_secondary;
+      }
+    }
+
+    &--is-small {
+      //animation
+      transform: translate(-10%, 40%);
+
+      .carousel__slider {
+        //layout
+        @include box-size(rem-calc(500), rem-calc(400));
+
+        //design
+        background-color: $color_primary;
+      }
+
+      .carousel__image {
+        &-leave-active {
+          transition-delay: 200ms; // Offset this animation slightly from the main slider
+        }
+        &-enter-active {
+          transition-delay: 600ms; // See above
+        }
+      }
+    }
+  }
+
+  &__slider {
+    //layout
+    clear: both;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    //layout
+    top: 0;
+    height: 100%;
+    position: absolute;
+
+    //animation
+    @include clip-path-wipe;
+
+    &--is-active {
+      //layout
+      display: block;
+    }
+  }
+
+  &__categories {
+    //layout
+    margin: rem-calc(16 0 0);
+    display: block;
+
+    //typo
+    color: $color_secondary;
+    font-size: rem-calc(14);
+    font-weight: $font-weight_bold;
+    letter-spacing: rem-calc(3);
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    //typo
+    color: $color_primary;
+    font-size: rem-calc(96);
+    font-weight: $font-weight_bold;
+    line-height: rem-calc(96);
+    text-transform: uppercase;
+  }
+
+  &__link {
+    //layout
+    float: right;
+    margin: rem-calc(0 0 16);
+
+    //typo
+    color: $color_primary;
+    text-transform: uppercase;
+  }
+
+  &__nav {
+    //layout
+    left: rem-calc(-70);
+    bottom: rem-calc(25);
+    position: absolute;
+
+    &.display-mobile-only {
+      //layout
+      display: none;
+    }
+
+    &.display-desktop-only {
+      //layout
+      display: inherit;
+    }
+  }
+
+  &__button {
+    //layout
+    margin: rem-calc(8 0);
+    display: block;
+
+    //typo
+    color: $color_primary;
+    font-size: $font-size_lg-normal;
+    font-family: $font-family_display;
+    letter-spacing: rem-calc(3);
+    text-transform: uppercase;
+
+    //design
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    //event
+    cursor: pointer;
+  }
+
+  &__progress-indicator {
+    //layout
+    @include flex(row, nowrap, center, center);
+    width: 100%;
+    margin: rem-calc(16 0 0);
+
+    &.display-mobile-only {
+      //layout
+      display: none;
+    }
+
+    &.display-desktop-only {
+      //layout
+      display: flex;
+    }
+
+    &::before,
+    &::after {
+      //layout
+      display: inline-block;
+
+      //typo
+      color: $color_primary;
+      font-family: $font-family_display;
+      letter-spacing: rem-calc(3);
+    }
+
+    &::before {
+      //layout
+      content: '01';
+      margin-right: rem-calc(8);
+    }
+
+    &::after {
+      //layout
+      content: attr(data-slides-count);
+      margin-left: rem-calc(8);
+    }
+
+    &__bar {
+      //layout
+      @include box-size(100% / $carousel-number-content,rem-calc(2));
+      display: inline-block;
+
+      //design
+      background-color: $color_primary;
+
+      //animation
+      transition: background-color .5s ease;
+
+      //event
+      cursor: pointer;
+
+      &--is-active {
+        //design
+        background-color: $color_secondary;
+
+        //animation
+        transition: background-color .5s ease;
+      }
+    }
+  }
+}
+
+@include screen(laptop) {
+  .carousel {
+    &__view {
+      &--is-big {
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(600), rem-calc(372));
+        }
+      }
+  
+      &--is-small {
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(400), rem-calc(350));
+        }
+      }
+    }
+  }
+}
+
+@include screen(tablet-landscape) {
+  .carousel {
+    @include flex(column, nowrap, center, flex-end);
+
+    &__view {
+      &--is-big {
+        //layout
+        @include flex(column, nowrap, center, flex-start);
+
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(720), rem-calc(481));
+          order: 1;
+          max-width: rem-calc(720);
+        }
+
+        .carousel__text-slider {
+          //layout
+          order: 0;
+        }
+      }
+  
+      &--is-small {
+        //layout
+        margin: rem-calc(16 0 0);
+
+        //animation
+        transform: translate(0, 0);
+
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(500), rem-calc(404));
+        }
+      }
+    }
+
+    &__link {
+      //layout
+      left: rem-calc(-85);
+      bottom: 0;
+      position: absolute;
+    }
+
+    &__nav {  
+      //layout
+      width: 100%;
+      position: static;
+      justify-content: space-between;
+
+      &.display-mobile-only {
+        //layout
+        display: inherit;
+      }
+  
+      &.display-desktop-only {
+        //layout
+        display: none;
+      }
+    }
+
+    &__progress-indicator {
+      &.display-mobile-only {
+        //layout
+        display: flex;
+      }
+  
+      &.display-desktop-only {
+        //layout
+        display: none;
+      }
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .carousel {
+    &__view {
+      &--is-big {
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(540), rem-calc(335));
+          max-width: rem-calc(540);
+        }
+      }
+  
+      &--is-small {
+        .carousel__slider {
+          //layout
+          @include box-size(rem-calc(400), rem-calc(350));
+        }
+      }
+    }
+
+    &__link {
+      //typo
+      font-size: $font-size_Sm-normal;
+    }
+  }
+}
+
+@include screen(custom-width, max, 540px) { 
+  .carousel {
+    //layout
+    width: 100%;
+
+    &__view {
+      //layout
+      width: inherit;
+
+      &--is-big {
+        .carousel__slider {
+          //layout
+          @include box-size(100%, rem-calc(300));
+        }
+      }
+  
+      &--is-small {
+        //layout
+        @include flex(column, nowrap, center, flex-start);
+
+        .carousel__slider {
+          //layout
+          @include box-size(100%, rem-calc(300));
+          order: 0;
+        }
+
+        .carousel__link {
+          //layout
+          order: 1;
+          margin: rem-calc(16 0 0);
+          position: static;
+        }
+
+        .carousel__image {
+          //animation
+          transform: scale(1.5);
+        }
+      }
+    }
+
+    &__image {
+      //layout
+      top: 0;
+      left: 0;
+      position: absolute;
+
+      //animation
+      clip-path: none;
+      transform: scale(1.2), translate(-50%,0);
+
+      &-enter {
+        clip-path: none;
+        transform: none;
+      }
+      &-leave-to {
+        clip-path: none;
+        transform: none;
+      }
+      &-enter-active {
+        transition: none;
+        transition-delay: none;
+      }
+      &-leave-active {
+        transition: none;
+      }
+    }
+  }
+}
+
+@include screen(mobile) { 
+  .carousel {
+    &__subtitle {
+      //typo
+      font-size: rem-calc(60);
+      line-height: rem-calc(60);
+    }
+  }
+}

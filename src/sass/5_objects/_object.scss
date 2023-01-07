@@ -1,0 +1,103 @@
+.container {
+  //layout
+  width: 100%;
+  margin: 0 auto;
+  padding: rem-calc(32 0);
+  max-width: $container_xxlarge;
+  
+  //design
+  box-sizing: border-box;
+
+  &__fluid {
+    //layout
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.page {
+  //layout
+  @include box-size(100%, 100vh);
+}
+
+/* width */
+::-webkit-scrollbar {
+  //layout
+  width: rem-calc(10);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  //design
+  background: $color_unselected; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  //design
+  background: $color_primary; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  //design
+  background: $color_secondary; 
+}
+
+::selection {
+  //design
+  background-color: #F79489; 
+}
+
+@include screen(desktop) {
+  .container {
+    //layout
+    max-width: $container_xlarge;
+  }
+}
+
+@include screen(laptop) {
+  .container {
+    //layout
+    max-width: $container_large;
+  }
+}
+
+@include screen(tablet-landscape) {
+  .container {
+    //layout
+    max-width: $container_medium;
+  }
+
+  .page {
+    //layout
+    overflow: hidden;
+  }
+}
+
+@include screen(tablet-portrait) {
+  .container {
+    //layout
+    padding: rem-calc(0 16);
+    max-width: $container_small;
+  }
+}
+
+@include screen(mobile) {
+  .container {
+    //layout
+    padding: rem-calc(0 48);
+    max-width: none;
+  }
+
+  .page {
+    height: auto;
+  }
+}
+
+@include screen(custom-height, max, 700px) {
+  .container {
+    //layout
+    padding: rem-calc(0 16);
+  }
+}

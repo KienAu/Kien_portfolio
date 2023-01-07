@@ -1,0 +1,185 @@
+// Box-size
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin box-size($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+
+// Flex
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin flex($direction: row, $break: nowrap, $align-width: center, $align-height: center) {
+  display: flex;
+  align-items: $align-height;
+  flex-flow: $direction $break;
+  justify-content: $align-width;
+}
+
+// Rem value
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$rem-base: 16px;
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+// Position Center
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin position($position) {
+  position: absolute;
+  
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Breakpoint
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin screen($size, $type: max, $pixels: $breakpoint_mobile) {
+  @if $size == 'mobile' {
+    @media screen and ($type + -width: $breakpoint_mobile) {
+        @content;
+    }
+  }
+  @else if $size == 'tablet-portrait' {
+    @media screen and ($type + -width: $breakpoint_tablet-portrait) {
+        @content;
+    }
+  }
+  @else if $size == 'tablet-landscape' {
+    @media screen and ($type + -width: $breakpoint_tablet-landscape) {
+        @content;
+    }
+  }
+  @else if $size == 'laptop' {
+    @media screen and ($type + -width: $breakpoint_laptop) {
+        @content;
+    }
+  }
+  @else if $size == 'desktop' {
+    @media screen and ($type + -width: $breakpoint_desktop) {
+        @content;
+    }
+  }
+  @else if $size == 'custom-height' {
+    @media screen and ($type + -height: $pixels) {
+      @content;
+    }
+  }
+  @else if $size == 'custom-width' {
+    @media screen and ($type + -width: $pixels) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+@mixin clip-path-wipe {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+  &-enter {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transform: scale(1.3);
+  }
+  &-leave-to {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    transform: scale(1.3);
+  }
+  &-enter-active {
+    transition: all 700ms;
+    transition-delay: 500ms;
+  }
+  &-leave-active {
+    transition: all 700ms;
+  }
+}
+
+@mixin slide{
+  &-enter,
+  &-leave-to {
+    transform: translateX(-101%);
+  }
+  &-enter-active,
+  &-leave-active {
+    transition: transform 1s;
+  }
+}
+
+.slide {
+  @include slide;
+}
+
+@mixin fade{
+  &-enter,
+  &-leave-to{
+    opacity: 0;
+  }
+}
+
+.fade {
+  @include fade;
+  &-enter-active,
+  &-leave-active {
+    transition: all 300ms;
+  }
+  &-enter-active {
+    transition-delay: 700ms;
+  }
+}
+
+
+@keyframes going {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes coming {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

@@ -1,0 +1,35 @@
+// vue-Router
+.router-anim-enter-active {
+  animation: coming 0.5s;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.router-anim-leave-active {
+  animation: going 0.5s;
+}
+
+
+// navigation.vue
+.navigation__transition--is-fade {
+  //animation
+  @include fade;
+
+  &-enter-active,
+  &-leave-active {
+    //animation
+    transition: all 300ms;
+  }
+
+  &-leave-active {
+    //animation
+    transition-delay: 150ms;
+  }
+}
+
+@include screen(tablet-portrait) {
+  .navigation__transition--is-fade {
+    //layout
+    z-index: 0;
+  }
+}

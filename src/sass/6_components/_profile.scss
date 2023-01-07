@@ -1,0 +1,238 @@
+// views/home.vue
+
+.profile {
+  //layout
+  position: relative;
+}
+
+@include screen(tablet-landscape) {
+  .profile {
+    .container {
+      //layout
+      @include flex(column, nowrap, center, center);
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .profile {
+    .container {
+      //layout
+      height: 100vh;
+    }
+  }
+}
+
+@include screen(custom-height, max, 450px) {
+  .profile {
+    .container {
+      @include flex(row, nowrap, center, center);
+      height: auto;
+    }
+  }
+}
+
+// components/profile-img.vue
+
+.profile {
+  &__picture {
+    //layout 
+    height: 100%;
+    position: relative;
+  }
+
+  &__image {
+    //layout
+    @include position(both);
+    left: 30%;
+    width: 100%;
+    max-width: rem-calc(350);
+  }
+}
+
+@include screen(desktop) {
+  .profile {
+    &__image {
+      //layout
+      left: 25%;
+      margin: 0;
+    }
+  }
+}
+
+@include screen(laptop) {
+  .profile {
+    &__image {
+      //layout
+      left: 35%;
+      margin: rem-calc(0 0 0 -120);
+    }
+  }
+}
+
+@include screen(tablet-landscape) {
+  .profile {
+    &__picture {
+      //layout
+      order: 0;
+      height: unset;
+    }
+
+    &__image {
+      //layout
+      margin: 0;
+      display: block;
+      position: unset;
+      max-width: rem-calc(250);
+
+      //animation
+      transform: unset;
+    }
+  }
+}
+
+@include screen(mobile) {
+  .profile {
+    &__image {
+      //layout
+      max-width: rem-calc(200);
+    }
+  }
+}
+
+@include screen(custom-height, max, 450px) {
+  .profile {
+    &__picture {
+      //layout
+      order: 0;
+    }
+
+    &__image {
+      //layout
+      margin: 0;
+      position: static;
+
+      //animation
+      transform: unset;
+    }
+  }
+}
+
+
+// components/profile-info.vue
+
+.profile {
+  &__info {
+    //layout
+    @include position(both);
+    margin: rem-calc(0 0 0 160);
+    padding: rem-calc(0 0 10);
+    overflow: hidden;
+  }
+
+  &__intro {
+    //typo
+    font-size: $font-size_lg-normal;
+  }
+
+  &__title {
+    //typo
+    font-size: $font-size_lg-display;
+  }
+
+  &__jobtitle-text {
+    //typo
+    font-size: 3vmin;
+    font-weight: $font-weight_normal;
+    line-height: rem-calc(24);
+  }
+}
+
+@include screen(laptop) {
+  .profile {
+    &__info {
+      //layout
+      left: 65%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: rem-calc(450);
+    }
+
+    &__title {
+      //layout
+      font-size: $font-size_Md-display;
+      line-height: rem-calc(96);
+    }
+
+    &__jobtitle-text {
+      //typo
+      font-size: rem-calc(24);
+    }
+  }
+}
+
+@include screen(tablet-landscape) {
+  .profile {
+    &__info {
+      //layout
+      order: 1;
+      margin: 0;
+      position: static;
+
+      //animation
+      transform: unset;
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .profile {
+    &__jobtitle-text {
+      //typo
+      font-size: rem-calc(24);
+    }
+  }
+}
+
+@include screen(mobile) {
+  .profile {
+    &__title {
+      //layout
+      font-size: $font-size_Sm-display;
+      line-height: normal;
+    }
+
+    &__jobtitle-text {
+      //layout
+      width: 100%;
+
+      //typo
+      font-size: rem-calc(16);
+    }
+  }
+}
+
+@include screen(custom-height, max, 450px) {
+  .profile {
+    &__info {
+      //layout
+      order: 1;
+      margin: rem-calc(0 0 0 32);
+      position: static;
+
+      //animation
+      transform: unset;
+    }
+
+    &__title {
+      //typo
+      line-height: normal;
+    }
+
+    &__jobtitle {
+      //layout
+      position: absolute;
+    }
+  }
+}

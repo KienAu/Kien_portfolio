@@ -1,0 +1,85 @@
+// Table of Contents
+// Foundation Settings
+//
+// a. Base
+// b. Color
+// c. Typography
+// d. Media Query Ranges
+// e. Others
+
+// a. Base
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$container_xxlarge: 1600px;
+$container_xlarge: 1240px;
+$container_large: 960px;
+$container_medium: 720px;
+$container_small: 540px;
+$container_xsmall: 100%;
+
+// b. Color
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Default colors
+
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
+
+$color_primary: $oil;
+$color_secondary: #F37169;
+$color_unselected: #858585;
+
+// c. Typography
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;700&display=swap');
+
+$font-family_display: 'Karla', sans-serif;
+$font-family_heading: 'Karla', sans-serif;
+$font-family_paragraph: 'Karla', sans-serif;
+
+$font-size_lg-display: 120px;
+$font-size_lg-title:  3vmin;
+$font-size_lg-normal: 1rem;
+$font-size_lg-sub: 0.75rem;
+$font-size_Md-display: 100px;
+$font-size_Md-title:  1.2rem;
+$font-size_Md-normal: 1rem;
+$font-size_Sm-display: 48px;
+$font-size_Sm-title:  1rem;
+$font-size_Sm-link:  1rem;
+$font-size_Sm-normal: 1rem;
+
+$font-weight_light: 300;
+$font-weight_normal: 400;
+$font-weight_semibold: 500;
+$font-weight_bold: 700;
+
+// d. Media Query Ranges
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$breakpoint_mobile: 480px;
+$breakpoint_tablet-portrait: 768px;
+$breakpoint_tablet-landscape: 1024px;
+$breakpoint_laptop:  1440px;
+$breakpoint_desktop: 1980px;
+
+// e. Others
+// - - - - - - - - - - - - - - - - - - - - - - - - -

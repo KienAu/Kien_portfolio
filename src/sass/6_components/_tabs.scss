@@ -1,0 +1,68 @@
+// components/tabs.vue
+.tabs {
+  &__list {
+    //layout
+    margin: rem-calc(0 0 16);
+  }
+
+  &__item {
+    //layout
+    margin: rem-calc(0 10);
+    display: inline-block;
+
+    //event
+    cursor: pointer;
+
+    &:first-child {
+      //layout
+      margin: 0;
+    }
+  }
+
+  &__details {
+    //layout
+    height: rem-calc(400);
+  }
+
+  &__link {
+    //typo
+    color: $color_unselected;
+    font-size: $font-size_lg-sub;
+    font-weight: bold;
+    letter-spacing: rem-calc(3);
+    text-transform: uppercase;
+
+    //animation
+    transition: all .5s ease;
+  }
+
+  &__item--is-active {
+      .tabs__link {
+      //typo
+      color: $color_secondary;
+
+      //animation
+      transition: all .5s ease;
+    }
+  }
+}
+
+
+@include screen(mobile) {
+  .tabs {
+    &__item {
+      //layout
+      margin: 0;
+      display: block;
+    }
+  }
+}
+
+@include screen(custom-height, max, 450px) {
+  .tabs {
+    &__details {
+      //layout
+      height: rem-calc(600);
+    }
+  }
+}

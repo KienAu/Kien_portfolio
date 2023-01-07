@@ -1,0 +1,52 @@
+//  views/portfolio.vue
+
+.portfolio {
+  .container {
+    //layout
+    @include flex(column, nowrap, center, center);
+    position: relative;
+  }
+  
+  &__title {
+    //layout
+    width: 100%;
+    margin: rem-calc(32 0);
+    
+    //typo
+    font-size: rem-calc(64);
+    text-align: right;
+  }
+}
+
+@include screen(tablet-landscape) {
+  .portfolio {
+    .container {
+      //layout
+      height: rem-calc(1300);
+    }
+  }
+}
+
+
+@include screen(mobile) { 
+  .portfolio {
+    &__title {
+      //layout
+      font-size: rem-calc(32);
+    }
+
+    .container {
+      //layout
+      height: rem-calc(1000);
+    }
+  }
+}
+
+@include screen(custom-height, max, 1000px) {
+  .portfolio {
+    .container {
+      //layout
+      min-height: rem-calc(936);
+    }
+  }
+}

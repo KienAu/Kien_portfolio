@@ -1,0 +1,129 @@
+// views/contact.vue
+
+.contact {
+  .container {
+    //layout
+    @include flex(row, nowrap, center, center);
+  }
+
+  &__content {
+    &:first-child {
+      //layout
+      padding: rem-calc(0 32 0 0);
+
+      //design
+      border-right: rem-calc(1) solid $color_primary;
+    }
+
+    &:last-child {
+      //layout
+      margin: rem-calc(0 0 0 32);
+    }
+  }
+
+  &__title {
+    //layout
+    margin: rem-calc(0 0 16);
+    font-size: rem-calc(64);
+  }
+
+  &__text {
+    //layout
+    line-height: rem-calc(34);
+  }
+
+  &__subtitle {
+    //layout
+    margin: rem-calc(0 0 16);
+    display: block;
+
+    //typo
+    color: $color_secondary;
+    font-size: rem-calc(14);
+    font-weight: $font-weight_bold;
+    letter-spacing: rem-calc(3);
+  }
+
+  &__info {
+    &__item {
+      //layout
+      margin: rem-calc(0 0 16);
+      display: block;
+    }
+  }
+
+  &__social {
+    //layout
+    margin: rem-calc(16 0 0);
+
+    &__item {
+      //layout
+      margin: rem-calc(0 0 16);
+    }
+
+    &__link {
+      //typo
+      color: $color_primary;
+    }
+
+    &__text {
+      //layout
+      margin: rem-calc(0 0 0 8);
+      
+      //typo
+      vertical-align: text-top;
+    }
+  }
+}
+
+@include screen(laptop) {
+  .contact {
+    &__content {
+      &:last-child {
+        //layout
+        flex-basis: rem-calc(400);
+      }
+    }
+  }
+}
+
+@include screen(tablet-landscape) {
+  .contact {
+    .container {
+      //layout
+      @include flex(column, nowrap, center, flex-start);
+      height: auto;
+    }
+
+    &__content {
+      &:first-child {
+        //layout
+        padding: rem-calc(0 0 32);
+  
+        //design
+        border-right: unset;
+        border-bottom: rem-calc(1) solid $color_primary;
+      }
+  
+      &:last-child {
+        //layout
+        margin: rem-calc(32 0 0);
+        flex-basis: unset;
+      }
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .contact {
+    &__content {
+      //layout
+      margin: rem-calc(32 0 0);
+    }
+
+    &__title {
+      //typo
+      font-size: rem-calc(48);
+    }
+  }
+}

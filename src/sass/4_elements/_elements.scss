@@ -1,0 +1,57 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  //layout
+  margin: 0;
+
+  //typo
+  color: $color_primary;
+  font-family: $font-family_heading;
+}
+
+p,
+span,
+input {
+  //layout
+  margin: 0;
+
+  //typo
+  color: $color_primary;
+  font-size: $font-size_lg-normal;
+  font-family: $font-family_paragraph;
+}
+
+a {
+  //typo
+  color: inherit;
+  font-size: $font-size_lg-normal;
+  font-family: $font-family_paragraph;
+  text-decoration: none;
+}
+
+ul {
+  //layout
+  margin: 0;
+  padding: 0;
+
+  li {
+    //design
+    list-style-type: none;
+  }
+}
+
+main {
+  //layout
+  position: relative;
+}
+
+@include screen(tablet-portrait) {
+  a {
+    //typo
+    font-size: $font-size_Sm-link;
+  }
+}

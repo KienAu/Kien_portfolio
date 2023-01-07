@@ -1,0 +1,80 @@
+// components/social-media.vue
+
+.social-media {
+  //layout
+  @include box-size(rem-calc(50), 100%);
+  top: 0;
+  left: rem-calc(16);
+  position: absolute;
+
+  &__logo {
+    //layout
+    @include box-size(rem-calc(50),auto);
+    top: rem-calc(32);
+    position: fixed;
+  }
+
+  &__container {
+    //layout
+    bottom: rem-calc(32);
+    display: inline-block;
+    position: fixed;
+  }
+
+  &__text {
+    //layout
+    width: rem-calc(200);
+    margin: rem-calc(0 0 8);
+
+    //animation
+    transform: rotate(-90deg);
+    transform-origin: left top 0;
+  }
+
+  &__item {
+    //layout
+    margin: rem-calc(0 0 8);
+  }
+
+  &__link {
+    //typo
+    color: $color_primary;
+
+    //animation
+    transition: all .5s ease;
+
+    &:hover {
+      //typo
+      color: $color_secondary;
+    }
+  }
+}
+
+@include screen(tablet-portrait) {
+  .social-media {
+    //layout
+    display: none;
+  }
+}
+
+
+@include screen(custom-height, max, 450px) {
+  .social-media {
+    &__logo {
+      //layout
+      top: rem-calc(16);
+    }
+    &__container {
+      //layout
+      bottom: rem-calc(8);
+    }
+
+    &__text {
+      //layout
+      margin: 0;
+      
+      //typo
+      font-size: rem-calc(14);
+    }
+  }
+}
